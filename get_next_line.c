@@ -6,30 +6,31 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/11/26 01:17:54 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/11/26 21:01:12 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*buffer_read(fd)
+static char	*line_read(fd)
 {
-	//
-}
+	char		*buffer_;
+	ssize_t		bytes_read;
 
-static	*line_read(fd, line)
-{
-	if (!line)
-		malloc(1);
-	line = "";
-	while (ft_strchr(line, '\n'))
-		read(fd, *buffer_read, BUFFER_SIZE);
+	buffer_ = malloc(BUFFER_SIZE + 1);
+	{
+		if (!buffer_)
+			return (NULL);
+	}
+	bytes_read = read(fd, buffer_, BUFFER_SIZE);
+	buffer_[bytes_read] = '\0';
+	return(buffer_);
 }
 
 char	*get_next_line(int fd)
 {
 	char	*line;
 
-	line_read(fd);
-	return (line_read);
+	line = line_read(fd);
+	return (line);
 }

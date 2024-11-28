@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 22:57:06 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/11/26 20:08:08 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:32:30 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # endif
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(char *s);
 char	*ft_strchr(const char *s, int c);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

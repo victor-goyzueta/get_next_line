@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:33:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/11/28 20:32:23 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:43:16 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
-	s = (char *)malloc((s1len + s2len) + 1);
+	s = malloc(sizeof char * (s1len + s2len) + 1);
 	if (!s)
 		return (NULL);
 	ft_memcpy(s, s1, s1len);

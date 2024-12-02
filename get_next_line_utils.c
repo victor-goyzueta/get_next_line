@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:33:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 17:13:32 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:12:08 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	slen = ft_strlen(s);
 	if (start >= slen)
-		return (ft_strdup(""));
+		return (ft_strdup("")); //Podrias ser return (NULL);
 	if (len > slen - start)
 		len = slen - start;
 	ss = (char *)malloc(len + 1);

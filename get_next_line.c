@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 18:33:12 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:27:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 char	*update_line(char *pre_line)
 {
 	char	*next_line;
-	size_t	len;
-	size_t	i;
+	char	*tmp;
 
-	len = ft_strlen(pre_line);
-	while ()
-	next_line = ft_substr(ft_strchr(pre_line, '\n'), 1, ??);
-	return (next_line);
+	tmp = ft_strchr(pre_line, '\n');
+	next_line = ft_substr(tmp, 1, ft_strlen(tmp));
+	return (free(pre_line), next_line);
 }
 
 char	*clean_line(char *pre_line)
@@ -44,7 +42,7 @@ char	*read_line(int fd, char *pre_line)
 		if (byte == 0)
 			break ;
 		if (byte == -1)
-			return (free(buffer), free (pre_line), NULL);
+			return (free(buffer), free(pre_line), NULL);
 		buffer[byte] = '\0';
 		pre_line = ft_strjoin(pre_line, buffer);
 		if (!pre_line)

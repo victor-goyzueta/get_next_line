@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 19:27:51 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/02 19:28:32 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*update_line(char *pre_line)
 
 char	*clean_line(char *pre_line)
 {
-	return (line);
+	//return (line);
 }
 
 char	*read_line(int fd, char *pre_line)

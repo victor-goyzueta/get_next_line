@@ -6,20 +6,30 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 14:40:17 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:29:51 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	clean_lines(char **read_line, char **line)
+/*char	*update_buffer(char *pre_line)
 {
-	size_t	len;
+	char *next_line;
 
-	len = ft_strlen(read_line[0]);
-	while (!ft_strchr(read_line[0], '\n'));
-	line[0] = ft_substr(read_line[0], 0, len);
-	
+	next_line = ft_strchr(pre_line, '\n');
+	if (!line)
+		return (free(next_line), NULL);
+	return(next_line);
+}*/
+
+char	*clean_line(char *pre_line)
+{
+	char *line;
+
+	line = ft_strchr(pre_line, '\n');
+	if (!line)
+		return (free(line), NULL);
+	return(line);
 }
 
 char	*read_line(int fd, char *pre_line)
@@ -36,8 +46,8 @@ char	*read_line(int fd, char *pre_line)
 		byte = read(fd, buffer, BUFFER_SIZE);
 		if (byte == 0)
 			break ;
-		// if (byte == -1)
-		//	return (free(buffer), free (line), NULL);
+		if (byte == -1)
+			return (free(buffer), free (pre_line), NULL);
 		buffer[byte] = '\0';
 		pre_line = ft_strjoin(pre_line, buffer);
 		if (!pre_line)
@@ -51,7 +61,8 @@ char	*get_next_line(int fd)
 	static char	*line = NULL;
 	char		*pre_line;
 
+	pre_line = NULL;
 	pre_line = read_line(fd, pre_line);
-	clean_lines(&pre_line, &line);
+	line = clean_line(pre_line);
 	return (line);
 }

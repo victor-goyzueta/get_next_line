@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:33:35 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 19:12:08 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:48:37 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
-
+	if(!s)//UPDATE REVISAR NO HABÍA ESTA COMPROBACIÓN
+		return(0);
 	i = 0;
 	while (s[i])
 		i++;
@@ -51,17 +52,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	s1len;
 	size_t	s2len;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)//UPDATE REVISAR ANTES ERA ||
 		return (NULL);
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
+	s1len = ft_strlen((char *)s1);
+	s2len = ft_strlen((char *)s2);
 	s = malloc(sizeof(char) * ((s1len + s2len) + 1));
 	if (!s)
 		return (NULL);
 	ft_memcpy(s, s1, s1len);
 	ft_memcpy(s + s1len, s2, s2len);
 	s[s1len + s2len] = '\0';
-	free(s1);
+	free((char *)s1);
 	return (s);
 }
 
@@ -70,7 +71,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	src_len;
 	size_t	copy_len;
 
-	src_len = ft_strlen(src);
+	src_len = ft_strlen((char *)src);
 	if (size > 0)
 	{
 		if (src_len >= size)
@@ -90,7 +91,7 @@ char	*ft_strdup(const char *s)
 
 	if (s == NULL)
 		return (NULL);
-	len = ft_strlen(s) + 1;
+	len = ft_strlen((char *)s) + 1;
 	cpy = (char *)malloc(len);
 	if (cpy == NULL)
 		return (NULL);
@@ -105,9 +106,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	slen = ft_strlen(s);
+	slen = ft_strlen((char *)s);
 	if (start >= slen)
-		return (ft_strdup("")); //Podrias ser return (NULL);
+		return (NULL); //UPDATE ANTES ERA UN FT_STRDUP("");
 	if (len > slen - start)
 		len = slen - start;
 	ss = (char *)malloc(len + 1);

@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/02 19:28:32 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:46:58 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,16 @@ char	*update_line(char *pre_line)
 
 char	*clean_line(char *pre_line)
 {
-	//return (line);
+	char	*line;
+	char	*tmp;
+	size_t	len;
+
+	tmp = ft_strchr(pre_line, '\n');
+	len = (ft_strlen(pre_line) - ft_strlen(tmp)) + 1;//UPDATE ANTES NO HABÍA EL +1
+	line = ft_substr(pre_line, 0, len);
+	if (!line)
+		return (free(pre_line), NULL);
+	return (line);
 }
 
 char	*read_line(int fd, char *pre_line)
@@ -44,7 +53,10 @@ char	*read_line(int fd, char *pre_line)
 		if (byte == -1)
 			return (free(buffer), free(pre_line), NULL);
 		buffer[byte] = '\0';
-		pre_line = ft_strjoin(pre_line, buffer);
+		if (!pre_line)
+			pre_line = ft_strdup(buffer);
+		else
+			pre_line = ft_strjoin(pre_line, buffer);
 		if (!pre_line)
 			return (free(buffer), NULL);
 	}
@@ -53,10 +65,10 @@ char	*read_line(int fd, char *pre_line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line = NULL;
-	char		*pre_line;
+	static char	*pre_line = NULL;
+	char		*line;
 
-	pre_line = NULL;
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	pre_line = read_line(fd, pre_line);
@@ -64,5 +76,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = clean_line(pre_line);
 	pre_line = update_line(pre_line);
-	return (free(pre_line), line);
+	return (line);
 }

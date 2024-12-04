@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/03 19:46:58 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:14:53 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*update_line(char *pre_line)
 	char	*tmp;
 
 	tmp = ft_strchr(pre_line, '\n');
-	next_line = ft_substr(tmp, 1, ft_strlen(tmp));
+	next_line = ft_substr(tmp, 1 , ft_strlen(tmp));
+	if(next_line && !*next_line)//UPDATE COMPROBACIÓN
+		return (free(pre_line),free(next_line), NULL);
 	return (free(pre_line), next_line);
 }
 
@@ -29,7 +31,7 @@ char	*clean_line(char *pre_line)
 	size_t	len;
 
 	tmp = ft_strchr(pre_line, '\n');
-	len = (ft_strlen(pre_line) - ft_strlen(tmp)) + 1;//UPDATE ANTES NO HABÍA EL +1
+	len = (ft_strlen(pre_line) - ft_strlen(tmp) + 1);
 	line = ft_substr(pre_line, 0, len);
 	if (!line)
 		return (free(pre_line), NULL);

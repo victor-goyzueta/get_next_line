@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 23:10:26 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/04 18:06:46 by vgoyzuet         ###   ########.fr       */
+/*   Created: 2024/12/04 17:43:33 by vgoyzuet          #+#    #+#             */
+/*   Updated: 2024/12/04 17:47:55 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*update_line(char *pre_line)
 {
@@ -67,16 +67,16 @@ char	*read_line(int fd, char *pre_line)
 
 char	*get_next_line(int fd)
 {
-	static char	*pre_line = NULL;
+	static char	*pre_line[MAX_FD];
 	char		*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	pre_line = read_line(fd, pre_line);
-	if (!pre_line)
+	pre_line[fd] = read_line(fd, pre_line[fd]);
+	if (!pre_line[fd])
 		return (NULL);
-	line = clean_line(pre_line);
-	pre_line = update_line(pre_line);
+	line = clean_line(pre_line[fd]);
+	pre_line[fd] = update_line(pre_line[fd]);
 	return (line);
 }

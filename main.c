@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:34:47 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/04 19:18:38 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:24:41 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 	{
 		fd = open("file.txt", O_RDONLY);
 		if (fd == -1)
-			return (perror("Error al abrir el archivo"), 1);
+			return (perror("Error opening the file"), 1);
 	}
 	while (1)
 	{
@@ -33,6 +33,6 @@ int	main(int argc, char *argv[])
 	}
 	if (fd != fileno(stdin))
 		if (close(fd) == -1)
-			return (perror("Error al cerrar el archivo"), 1);
+			return (perror("Error closing the file"), 1);
 	return (0);
 }

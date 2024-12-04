@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:34:47 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/04 19:10:12 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:18:38 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ int	main(int argc, char *argv[])
 		if (fd == -1)
 			return (perror("Error al abrir el archivo"), 1);
 	}
-	while ((line = get_next_line(fd)) != NULL)
+	while (1)
 	{
+		line = get_next_line(fd);
 		printf("%s", line);
 		free(line);
 	}
 	if (fd != fileno(stdin))
-		if(close(fd) == -1)
+		if (close(fd) == -1)
 			return (perror("Error al cerrar el archivo"), 1);
 	return (0);
 }

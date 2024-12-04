@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 17:43:33 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/04 17:47:55 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:13:36 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*update_line(char *pre_line)
 	char	*tmp;
 
 	tmp = ft_strchr(pre_line, '\n');
-	next_line = ft_substr(tmp, 1 , ft_strlen(tmp));
-	if(next_line && !*next_line)
-		return (free(pre_line),free(next_line), NULL);
+	next_line = ft_substr(tmp, 1, ft_strlen(tmp));
+	if (next_line && !*next_line)
+		return (free(pre_line), free(next_line), NULL);
 	return (free(pre_line), next_line);
 }
 

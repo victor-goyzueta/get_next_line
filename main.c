@@ -6,7 +6,7 @@
 /*   By: vgoyzuet <vgoyzuet@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 23:34:47 by vgoyzuet          #+#    #+#             */
-/*   Updated: 2024/12/05 17:17:44 by vgoyzuet         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:58:44 by vgoyzuet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ int	main()
 	int		fd;
 	char	*line;
 
-	fd = open("file.txt", O_RDONLY);
+	fd = open("file1.txt", O_RDONLY);
 	if (fd == -1)
 		return (perror("Error opening the file"), 1);
-	line = get_next_line(fd);
-	printf("%s", line);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);

@@ -3,7 +3,7 @@
 
 Es implementar una función que:
 
-1. Lea línea por línea desde un descriptor de archivo (**`fd`**) hasta alcanzar el final del archivo o encontrar un error.
+1. Lea línea por línea desde un descriptor de archivo (**`fd`**) hasta alcanzar el final del archivo (**`EOF`**)o encontrar un error.
 2. Devuelva cada línea como una cadena de caracteres, incluyendo el salto de línea (**`\n`**) al final de cada línea, excepto si el archivo no termina en un salto de línea.
 3. Mantenga su estado entre llamadas consecutivas:
     - Gestionando los datos sobrantes de las lecturas anteriores.
@@ -18,7 +18,7 @@ Objetivos adicionales del bonus:
 
 ## 1. Estructura general de `get_next_line`
 
-Para cumplir con este objetivo, `get_next_line` se dividirá en varias etapas y posiblemente en funciones auxiliares. Esto nos permitirá mantener el código modular, legible y eficiente.
+Para cumplir con este objetivo, `get_next_line` se dividirá en varias etapas. Esto nos permitirá mantener el código modular, legible y eficiente.
 
 ### **Prototipos de las funciones**
 
@@ -69,20 +69,7 @@ Para cumplir con este objetivo, `get_next_line` se dividirá en varias etapas y 
 
 ---
 
-
-## 3. Flujo Completo de `get_next_line`
-
-1. Verificar condiciones iniciales (`fd` válido, `BUFFER_SIZE` > 0).
-2. Llamar a `read_line` para leer y acumular datos del archivo.
-    - Manejar errores de lectura (`read` devuelve -1).
-    - Si no hay más datos (`read` devuelve 0), retornar `NULL`.
-3. Llamar a `clean_line` para extraer la línea actual.
-4. Llamar a `update_buffer` para conservar los datos sobrantes.
-5. Retornar la línea procesada.
-
----
-
-## 5. Esquema de Validación y Pruebas
+## 3. Esquema de Validación y Pruebas
 
 ### **Casos de Prueba**
 

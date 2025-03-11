@@ -3,7 +3,7 @@
 
 Es implementar una función que:
 
-1. Lea línea por línea desde un descriptor de archivo (**`fd`**) hasta alcanzar el final del archivo (**`EOF`**)o encontrar un error.
+1. Lea línea por línea desde un file descriptor (**`fd`**) hasta alcanzar el final del archivo (**`EOF`**) o encontrar un error.
 2. Devuelva cada línea como una cadena de caracteres, incluyendo el salto de línea (**`\n`**) al final de cada línea, excepto si el archivo no termina en un salto de línea.
 3. Mantenga su estado entre llamadas consecutivas:
     - Gestionando los datos sobrantes de las lecturas anteriores.
